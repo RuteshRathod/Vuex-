@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import EventService from '@/services/EventService.js'
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -15,12 +16,7 @@ export default new Vuex.Store({
       'food',
       'community'
     ],
-    todos: [
-      { id: 1, text: '...', done: true },
-      { id: 2, text: '...', done: false },
-      { id: 3, text: '...', done: true },
-      { id: 4, text: '...', done: false }
-    ]
+    events: []
   },
   mutations: {
     ADD_EVENT(state, event) {
@@ -30,14 +26,11 @@ export default new Vuex.Store({
   actions: {
     createEvent({ commit }, event) {
       return EventService.postEvent(event).then(() => {
-        commit('ADD_EVENT', event.data)
+        commit('ADD_EVENT', event)
       })
     }
   },
   getters: {
-    catLength: state => {
-      return state.categories.length
-    },
     getEventById: state => id => {
       return state.events.find(event => event.id === id)
     }

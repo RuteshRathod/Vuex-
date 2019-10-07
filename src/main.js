@@ -10,7 +10,6 @@ Vue.component('BaseIcon', BaseIcon)
 Vue.component('BaseButton', BaseButton)
 Vue.component('BaseInput', BaseInput)
 
-
 Vue.config.productionTip = false
 
 new Vue({
